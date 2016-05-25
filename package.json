@@ -8,12 +8,29 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ReactjsProgram/react-fundamentals-curriculum.git"
+    "url": "git+https://github.com/ochtec/react-fundamentals-curriculum.git"
   },
-  "author": "Tyler McGinnis <tylermcginnis33@gmail.com> (http://tylermcginnis.com)",
+  "author": "Mike O",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ReactjsProgram/react-fundamentals-curriculum/issues"
+    "url": "https://github.com/ochtec/react-fundamentals-curriculum/issues"
   },
-  "homepage": "https://github.com/ReactjsProgram/react-fundamentals-curriculum#readme"
+  "homepage": "https://github.com/ochtec/react-fundamentals-curriculum#readme",
+  "dependencies": {
+    "axios": "^0.11.1",
+    "react": "^15.1.0",
+    "react-addons-css-transition-group": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "html-webpack-plugin": "^2.17.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
 }

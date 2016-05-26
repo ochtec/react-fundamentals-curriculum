@@ -1,3 +1,5 @@
+var path = require('path');
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/app/index.html',
@@ -6,18 +8,29 @@ var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 })
 
 module.exports = {
+  devtool: 'eval',
   entry: [
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
     './app/index.js'
   ],
   output: {
-    path: __dirname + '/dist',
-    filename: 'index_bundle.js'
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js'
   },
+  plugins: [
+    HtmlWebpackPluginConfig,
+    new webpack.HotModuleReplacementPlugin()
+  ],
   module: {
-    loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
-      {test: /\.css$/, loader: 'style-loader!css-loader'}
-    ]
-  },
-  plugins: [HtmlWebpackPluginConfig]
-}
+    loaders: [{
+      test: /\.js$/,
+      loaders: ['react-hot', 'babel-loader'],
+      include: path.join(__dirname, 'app')
+    },
+    {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+    }]
+  }
+};

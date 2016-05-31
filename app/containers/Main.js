@@ -1,5 +1,5 @@
 var React = require('react');
-var CityState = require('../components/CityState');
+var CityStateContainer = require('./CityStateContainer');
 
 var styles = {
   div: {
@@ -8,7 +8,6 @@ var styles = {
   },
     header :{
     display: 'flex',
-    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     background: 'orange',
@@ -22,8 +21,8 @@ var WeatherNav = React.createClass({
     return (
       <div style={styles.div}>
       <div style={styles.header}>
-        <h2>Basic Weather App</h2>
-        <CityState flexDirection='row' />
+        <h2>Basic Weather</h2>
+          <CityStateContainer flexDirection='row' />
         </div>
         {this.props.children}
       </div>

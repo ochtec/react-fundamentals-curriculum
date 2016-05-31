@@ -1,5 +1,5 @@
 var React = require('react');
-var CityState = require('./CityState');
+var CityStateContainer = require('../containers/CityStateContainer');
 
 var styles = {
   page: {
@@ -21,7 +21,7 @@ function Home () {
     return (
     <div style={styles.page}>
       <p style={styles.para}>Enter a City and State</p>
-      <CityState flexDirection='column' />
+      <CityStateContainer flexDirection='column' />
     </div>
   )
 }

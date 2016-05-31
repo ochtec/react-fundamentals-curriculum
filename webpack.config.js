@@ -19,13 +19,12 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    HtmlWebpackPluginConfig,
-    new webpack.HotModuleReplacementPlugin()
+    HtmlWebpackPluginConfig
   ],
   module: {
     loaders: [{
       test: /\.js$|.jsx$/,
-      loaders: ['react-hot', 'babel-loader'],
+      loader: 'react-hot!babel-loader',
       include: path.join(__dirname, 'app')
     },
     {

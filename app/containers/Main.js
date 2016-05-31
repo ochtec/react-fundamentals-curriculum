@@ -8,7 +8,6 @@ var styles = {
   },
     header :{
     display: 'flex',
-    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     background: 'orange',
@@ -22,7 +21,7 @@ var WeatherNav = React.createClass({
     return (
       <div style={styles.div}>
       <div style={styles.header}>
-        <h2>Basic Weather App</h2>
+        <h2>Basic Weather</h2>
           <CityStateContainer flexDirection='row' />
         </div>
         {this.props.children}

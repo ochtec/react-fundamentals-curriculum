@@ -1,4 +1,5 @@
 var React = require('react');
+var CityState = require('./CityState');
 
 var styles = {
   page: {
@@ -16,29 +17,13 @@ var styles = {
     fontSize: '30px'
   }
 }
-function Test () {
+function Home () {
     return (
     <div style={styles.page}>
       <p style={styles.para}>Enter a City and State</p>
-      <form>
-        <div>
-        <input
-          className='form-control'
-          placeholder='City, State'
-          type='text'
-        />
-        </div>
-        <div>
-        <button
-          className='btn btn-block btn-success'
-          type='submit'
-        >
-          Get Weather
-        </button>
-        </div>
-      </form>
+      <CityState flexDirection='column' />
     </div>
   )
 }
 
-module.exports = Test;
+module.exports = Home;

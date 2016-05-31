@@ -1,5 +1,5 @@
 var React = require('react');
-var CityState = require('../components/CityState');
+var CityStateContainer = require('./CityStateContainer');
 
 var styles = {
   div: {
@@ -23,7 +23,7 @@ var WeatherNav = React.createClass({
       <div style={styles.div}>
       <div style={styles.header}>
         <h2>Basic Weather App</h2>
-        <CityState flexDirection='row' />
+          <CityStateContainer flexDirection='row' />
         </div>
         {this.props.children}
       </div>

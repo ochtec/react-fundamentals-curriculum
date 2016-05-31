@@ -17,12 +17,15 @@ function CityState(props) {
           className='form-control'
           placeholder='City, State'
           type='text'
+          onChange={props.onLocationChange}
+          value={props.cityState}
         />
         </div>
         <div>
         <button
           className='btn btn-block btn-success'
           type='submit'
+          onClick={props.getWeather}
         >
           Get Weather
         </button>

@@ -18,7 +18,10 @@ var CityStateContainer = React.createClass({
   },
   getWeather(e) {
     this.context.router.push({
-      pathname: '/forecast/' + this.state.cityState
+      pathname: '/forecast/' + this.state.cityState,
+      state: {
+        city: this.state.cityState
+      }
     })
   },
   render() {

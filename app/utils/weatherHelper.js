@@ -13,7 +13,7 @@ var helpers = {
   getWeather(cityState) {
     return getWeatherSummary(cityState)
       .then(function (info) {
-        console.log(info.data)
+        return info.data
       })
     .catch(function (err) {console.warn('Error in getWeather: ', err)})
   },

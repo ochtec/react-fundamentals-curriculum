@@ -1,30 +1,52 @@
 var React = require('react');
 var weatherHelper = require('../utils/weatherHelper');
+var Forecast = require('../components/Forecast')
+
+var styles = {
+  container: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    maxWidth: 1200,
+    margin: '50px auto'
+  },
+  header: {
+    fontSize: 65,
+    color: '#333',
+    fontWeight: 100,
+    textAlign: 'center'
+  }
+}
 
 var ForecastContainer = React.createClass({
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
   getInitialState() {
     return {
-      cityState: '',
+      isLoading: true,
       data: []
     }
   },
-  onLocationChange(e) {
-    this.setState({
-      cityState: e.target.value
-    });
-  },
-  getWeather(e) {
-    console.log(this.state.cityState);
-    //api key 9e1e091bb7f8a96ea12aee5ddf41fa6d
-    weatherHelper.getWeather(this.state.cityState);
+  componentDidMount() {
+    weatherHelper.getWeather(this.props.location.state.city)
+      .then(function(weather) {
+        this.setState({
+          data: weather,
+          isLoading: false
+        })
+      }.bind(this))
   },
   render() {
     return (
+      this.state.isLoading === true ?
+      <div>Loading</div> :
       <div>
-        Forecast Component
+        <h1 style={styles.header}>{this.state.data.name} </h1>
+        <div style={styles.container}>
+          {this.state.data.list.map(function(result) {
+            return (<Forecast key={result.dt} day={result} />)
+          })}
+        </div>
       </div>
     )
   }

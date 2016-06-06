@@ -1,6 +1,7 @@
 var React = require('react');
 var weatherHelper = require('../utils/weatherHelper');
-var Forecast = require('../components/Forecast')
+var Forecast = require('../components/Forecast');
+import { Link } from 'react-router'
 
 var styles = {
   container: {
@@ -21,6 +22,9 @@ var styles = {
 }
 
 var ForecastContainer = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   getInitialState() {
     return {
       isLoading: true,
@@ -36,6 +40,15 @@ var ForecastContainer = React.createClass({
         })
       }.bind(this))
   },
+  handleClick(weather) {
+    console.log(weather)
+    this.context.router.push({
+      pathname: '/detail/' + this.state.data.name,
+      state: {
+        weather: weather
+      }
+    })
+  },
   render() {
     return (
       this.state.isLoading === true ?
@@ -43,8 +56,15 @@ var ForecastContainer = React.createClass({
       <div>
         <h1 style={styles.header}>{this.state.data.name} </h1>
         <div style={styles.container}>
-          {this.state.data.list.map(function(result) {
-            return (<Forecast key={result.dt} day={result} />)
+          {this.state.data.list.map(result => {
+            return (
+              <Forecast
+                key={result.dt}
+                day={result}
+                city={this.state.data.name}
+                handleClick={this.handleClick}
+              />
+            )
           })}
         </div>
       </div>
